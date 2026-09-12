@@ -27,7 +27,7 @@ Descriptors and tags appear directly in the file list:
 
 ## Download V1.0.4
 
-Download [FileTags-v1.0.4-win-x64-portable.zip](releases/v1.0.4/FileTags-v1.0.4-win-x64-portable.zip).
+[Download the latest File Tags release](https://github.com/NanditaVenkur/file-context/releases/latest)
 
 SHA-256:
 

@@ -1,4 +1,4 @@
-# 🤔 File Tags
+# 🤓☝️ File Tags
 
 File Tags is a local Windows desktop application for adding memorable descriptions and searchable tags to files. It provides a familiar file-browser interface for Desktop and Downloads without adding rename, move, or delete actions.
 

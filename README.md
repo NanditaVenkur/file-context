@@ -2,6 +2,12 @@
 
 File Tags is a local Windows desktop application for adding memorable descriptions and searchable tags to files. It provides a familiar file-browser interface for Desktop and Downloads without adding rename, move, or delete actions.
 
+## Why File Tags exists
+
+File Tags was created for people who sometimes have trouble remembering what a file was created, downloaded, or saved for. Instead of reopening several vaguely named files to identify the right one, you can attach a short description and useful tags while the context is still fresh.
+
+Those descriptions and tags then become searchable, making it easier to rediscover files by their purpose or meaning—not only by remembering the exact filename.
+
 > **Current preview:** V1.0.4 for 64-bit Windows. This portable preview is unsigned, so Microsoft Defender SmartScreen may show an **Unknown publisher** warning.
 
 ![File Tags metadata editor](docs/images/file-tags-metadata-editor.png)

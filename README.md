@@ -1,124 +1,80 @@
-# File Tags
+# File Tags Native
 
-File Tags is a local Windows desktop application for adding memorable descriptions and searchable tags to files. It provides a familiar file-browser interface for Desktop and Downloads without adding rename, move, or delete actions.
+**Current portable build: 1.0.9** — Windows x64, self-contained and unsigned.
 
-## Why File Tags exists
+File Tags Native is a local Windows desktop application for browsing Desktop and Downloads and assigning private descriptors and tags to files and folders without modifying their ordinary contents.
 
-File Tags was created for people who sometimes have trouble remembering what a file was created, downloaded, or saved for. Instead of reopening several vaguely named files to identify the right one, you can attach a short description and useful tags while the context is still fresh.
-
-Those descriptions and tags then become searchable, making it easier to rediscover files by their purpose or meaning—not only by remembering the exact filename.
-
-> **Current preview:** V1.0.4 for 64-bit Windows. This portable preview is unsigned, so Microsoft Defender SmartScreen may show an **Unknown publisher** warning.
-
-![File Tags metadata editor](docs/images/file-tags-metadata-editor.png)
-
-Descriptors and tags appear directly in the file list:
-
-![Tagged rows showing descriptors and tag pills](docs/images/file-tags-tagged-rows.png)
-
-## What it does
-
-- Browse Desktop, Downloads, and their subfolders.
-- Add a free-form descriptor and comma-separated tags to a file.
-- Search names, descriptors, tags, file types, availability, and paths.
-- Sort and group the file list.
-- Switch between details and grid views.
-- View recently opened or tagged files, retained for 18 days and capped at 50 entries.
-- Open files with their normal Windows application.
-- Copy a file's path, name, descriptor, or tags from the right-click menu.
-- Optionally add **Edit File Tags** to Windows File Explorer's **Show more options** menu.
-- Export and restore metadata using a readable JSON backup.
-- Check metadata health and rebuild the local search index.
-- Remove File Tags safely while preserving attached metadata by default.
-
-## Download V1.0.4
-
-[Download the latest File Tags release](https://github.com/NanditaVenkur/file-context/releases/latest)
-
-SHA-256:
-
-```text
-7919F56F2B936DF9DA2AD1E2561798338E195C51D61327D93658FEDFFF3FCDDE
-```
-
-The application is self-contained, so the .NET SDK and runtime do not need to be installed separately.
-
-## Install the portable preview
-
-1. Download the V1.0.4 ZIP.
-2. Optionally verify its SHA-256 checksum.
-3. Extract the complete archive into a permanent folder, such as `%LOCALAPPDATA%\Programs\FileTags-V1.0.4`.
-4. Run `FileTags.exe`.
-5. On first launch, choose whether to add File Tags to the current user's File Explorer menu.
-
-Do not move `FileTags.exe` after enabling Explorer integration. The Explorer command points to that exact location. If it is moved, open **Data & Safety** and enable the command again from the new copy.
-
-## File Explorer integration
-
-The first normal launch shows a one-time prompt. Selecting **Enable** creates a current-user command; it does not require administrator access or restart Windows Explorer.
-
-On Windows 11:
-
-1. Right-click a file.
-2. Select **Show more options**.
-3. Select **Edit File Tags**.
-
-The integration can be enabled or disabled later under **Data & Safety**.
-
-## How metadata is stored
-
-The source metadata is UTF-8 JSON stored in an NTFS alternate data stream named `FileTags`:
-
-```text
-<file path>:FileTags
-```
-
-SQLite provides the local searchable index under `%LOCALAPPDATA%\FileTagsNative`. The index can be rebuilt from ADS metadata discovered under Desktop and Downloads.
-
-### ADS portability warning
-
-Alternate data streams are an NTFS feature. Descriptions and tags may be lost when files are copied through:
-
-- FAT32 or exFAT drives
-- Archives such as ZIP files
-- Cloud services that do not preserve NTFS streams
-- Non-Windows systems
-- Programs that replace a file instead of updating it in place
-
-Use **Data & Safety → Export JSON backup** before transferring important tagged files.
-
-## Privacy and safety
+## Data safety and privacy
 
 - No account is required.
 - Filenames, paths, descriptors, and tags are not uploaded.
 - No telemetry is collected.
-- V1.0.4 does not perform network update checks.
-- Ordinary files are not renamed, moved, or deleted by the application.
-- Normal use does not require administrator access.
-- SQLite is treated as a rebuildable index rather than the only metadata copy.
+- Network access is only intended for update checks, if enabled in a future version.
+- File Tags does not rename, move, or delete ordinary files or folders.
+- Administrator privileges are not required during normal use.
 
-## Removing File Tags
+Metadata is stored in NTFS alternate data streams (ADS), with SQLite serving as a rebuildable search index. Files and folders can both be tagged. Streams may be lost when items are copied to FAT32/exFAT drives, some cloud services, archives, or systems that do not preserve them. Folder ADS is especially dependent on the copy tool preserving directory streams. Use **Data & Safety → Export JSON backup** before moving important items.
 
-Open **Data & Safety → Remove File Tags from this computer**.
+The Data & Safety screen can export and restore readable JSON backups, detect ADS support, rebuild the SQLite index from Desktop and Downloads, and report missing or unhealthy metadata. Metadata removal for an individual file or folder is available from its right-click menu. Export a backup before moving important tagged items.
 
-By default, the removal workflow can remove the File Explorer command and the local SQLite index/preferences. Descriptors and tags attached to files are preserved by default. Bulk ADS removal must be explicitly selected, requires typing `REMOVE METADATA`, and shows a second confirmation.
+## Screenshots
 
-If the application cannot open, run `emergency_cleanup.cmd` from the extracted folder. It removes the current-user Explorer registration and local File Tags data while preserving attached metadata. You can then delete the extracted application folder manually.
+### Main file browser
+
+![File Tags main file browser](docs/images/file-tags-main.png)
+
+### Quick metadata editor
+
+<img src="docs/images/file-tags-quick-editor.png" alt="File Tags quick metadata editor" width="520">
+
+## Launch
+
+For the portable release, download `FileTags-v1.0.9-win-x64-portable.zip` from [GitHub Releases](https://github.com/NanditaVenkur/file-context/releases), verify its accompanying SHA-256 checksum, extract the ZIP, and run `FileTags.exe`. The .NET SDK/runtime is not needed. Keep the extracted folder in place while Explorer integration is enabled; if you move it, disable and re-enable the command from the new location. The local development copy can also be launched with the **File Tags** Desktop shortcut.
+
+## Current features
+
+- Native dark WPF interface with Details and Grid views.
+- Scroll vertically over the file list with a mouse wheel or two-finger touchpad gesture, and horizontally in Details view with a left/right two-finger gesture; scrollbars remain available.
+- Desktop, Downloads, subfolder, Back, and Recent navigation.
+- **All tags** shows indexed tagged files and folders across Desktop and Downloads, including subfolders. Enter a tag to filter to exact matches; the absolute path is shown for each result.
+- Recent activity is retained for 18 days and capped at the newest 50 entries.
+- Descriptors and tags stored in each file or folder's NTFS alternate data stream named `FileTags`.
+- SQLite retained as a rebuildable search/index cache rather than the metadata source of truth.
+- Collapsible metadata editor and tag badges.
+- Created, Modified, Size, Type, Status, and metadata columns.
+- Search across name, descriptor, tags, file type, availability, and absolute path.
+- Dynamic search placeholder showing the current folder, Recent, or All tags scope.
+- Folder search remains scoped to the open folder. The All tags view uses the local SQLite index; if older ADS metadata is missing there, use **Data & Safety → Rebuild index** to discover it.
+- Sorting by name, modified date, created date, size, or descriptor.
+- Grouping by created day, file type, availability, or modified-time period. The default is newest creation date, grouped by day.
+- Resizable Details columns using the dividers between column headings.
+- Clickable Details rows and a row/card context menu for copying the quoted absolute path, name, descriptor, or tags.
+- Cohesive dark rounded context menus and reliable standard Windows scrollbars rendered through WPF's dark theme.
+- Stable Windows file identity and scoped Desktop/Downloads monitoring for same-drive renames and moves.
+- Missing-file preservation in Recent.
+- `Ctrl +`, `Ctrl -`, and `Ctrl 0` text scaling.
+- Layered dark gradients, rounded focus-aware inputs, subtle transparency, and restrained entrance/panel animations.
+- Double-click files to open them with their normal Windows application.
+- An optional current-user Explorer command, **Edit File Tags**, opens a compact native ADS editor from Windows 11 **Show more options** for a selected file or folder.
+- The compact editor has scrollable content with a fixed action bar and can save descriptor/tags or hand the selected item off to the full app with **View in File Tags**. Press Enter to save; Shift+Enter inserts a newline in the descriptor. A successful save closes the compact editor or collapses the editor in the main app.
+
+## Metadata and safety
+
+The source metadata is UTF-8 JSON in `<item>:FileTags`. Ordinary file contents remain unchanged, but the NTFS file or folder gains or updates this named stream. The index is stored at `%LOCALAPPDATA%\FileTagsNative\metadata-test.db` and can be rebuilt from intact ADS under Desktop and Downloads, including subfolders. Recent activity is stored only in SQLite and is not recovered by an index rebuild. Existing SQLite-only descriptions and tags migrate lazily into ADS when their items are encountered. The app does not write to the original browser-based File Tags database and exposes no filesystem rename, move, copy, or delete commands; its Copy commands only place text on the Windows clipboard.
+
+## Explorer command
+
+The local development copy has `FileTagsLauncher.exe`, a no-console launcher that reads `current-app.txt` and forwards arguments to the current versioned build. The portable ZIP contains a self-contained `FileTags.exe` instead. The optional Explorer integration registers **Edit File Tags** for the current user for selected files and folders. It can be disabled in Data & Safety. The static verb normally appears under **Show more options** on Windows 11; no code is loaded inside Explorer and no administrator access is required.
 
 ## Current limitations
 
-- Windows x64 only.
-- The preview is unsigned and may trigger SmartScreen warnings.
-- Folder metadata is not supported.
 - Cross-drive and USB moves are not reconnected automatically.
-- JSON restore currently expects the recorded absolute file paths.
-- Windows 11's modern primary context menu is not yet supported; integration appears under **Show more options**.
-- This is a portable preview, not an MSIX or Setup installer.
+- ADS may be lost when copying to non-NTFS filesystems or through tools that ignore named streams.
+- Programs that replace a file during Save may replace its ADS as well.
+- Missing entries do not yet have a Locate File workflow.
+- Icons are currently simple placeholders except for the application icon.
+- Open With and an installer are deferred; the current release is portable.
+- The portable release is not digitally signed, so Windows may show an Unknown publisher or SmartScreen warning. Verify the release checksum before running it.
+- Primary-menu Windows 11 integration is deferred; the safe static verb appears under **Show more options**.
 
-## Roadmap
-
-Potential later work includes a signed MSIX release, Microsoft Store distribution, previewable cross-computer path remapping, a Locate File workflow, broader drive support, and modern Windows 11 Explorer integration.
-
-## Author
-
-Created by **Nandita Venkatesh Kurinchi**.
+See `PROJECT_STATUS.md` for detailed progress and safety boundaries. See `FEATURE_IDEAS.md` for the prioritized product roadmap and future feature concepts.

@@ -1,4 +1,4 @@
-# File Tags Native
+# 💙 File Tags Native
 
 **Current portable build: 1.0.9** — Windows x64, self-contained and unsigned.
 

@@ -1,6 +1,6 @@
-# 💙 File Tags Native
+# File Tags Native
 
-**Current portable build: 1.0.9** — Windows x64, self-contained and unsigned.
+**Current portable build: 1.0.11** — Windows x64, self-contained and unsigned.
 
 File Tags Native is a local Windows desktop application for browsing Desktop and Downloads and assigning private descriptors and tags to files and folders without modifying their ordinary contents.
 
@@ -21,22 +21,30 @@ The Data & Safety screen can export and restore readable JSON backups, detect AD
 
 ### Main file browser
 
-![File Tags main file browser](docs/images/file-tags-metadata-editor.png)
+![File Tags main file browser](docs/images/file-tags-metadata-editor (1).png)
 
 ### Quick metadata editor
 
 <img src="docs/images/file-tags-tagged-rows.png" alt="File Tags quick metadata editor" width="520">
 
+## Recents
+
+<img src="docs/images/file-tags-recents.png" alt="File Tags quick metadata editor" width="520">
+
+## Browse by Tags
+
+<img src="docs/images/file-tags-browse.png" alt="File Tags quick metadata editor" width="520">
+
 ## Launch
 
-For the portable release, download `FileTags-v1.0.9-win-x64-portable.zip` from [GitHub Releases](https://github.com/NanditaVenkur/file-context/releases), verify its accompanying SHA-256 checksum, extract the ZIP, and run `FileTags.exe`. The .NET SDK/runtime is not needed. Keep the extracted folder in place while Explorer integration is enabled; if you move it, disable and re-enable the command from the new location. The local development copy can also be launched with the **File Tags** Desktop shortcut.
+For the portable release, download `FileTags-v1.0.11-win-x64-portable.zip` from [GitHub Releases](https://github.com/NanditaVenkur/file-context/releases), verify its accompanying SHA-256 checksum, extract the ZIP, and run `FileTags.exe`. The .NET SDK/runtime is not needed. Keep the extracted folder in place while Explorer integration is enabled; if you move it, disable and re-enable the command from the new location. The local development copy can also be launched with the **File Tags** Desktop shortcut.
 
 ## Current features
 
 - Native dark WPF interface with Details and Grid views.
 - Scroll vertically over the file list with a mouse wheel or two-finger touchpad gesture, and horizontally in Details view with a left/right two-finger gesture; scrollbars remain available.
 - Desktop, Downloads, subfolder, Back, and Recent navigation.
-- **All tags** shows indexed tagged files and folders across Desktop and Downloads, including subfolders. Enter a tag to filter to exact matches; the absolute path is shown for each result.
+- **All tags** shows indexed tagged files and folders across Desktop and Downloads, including subfolders. Enter a tag to filter to exact matches, or choose any existing tag from the polished sidebar dropdown; the absolute path is shown for each result.
 - Recent activity is retained for 18 days and capped at the newest 50 entries.
 - Descriptors and tags stored in each file or folder's NTFS alternate data stream named `FileTags`.
 - SQLite retained as a rebuildable search/index cache rather than the metadata source of truth.

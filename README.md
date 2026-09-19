@@ -2,7 +2,9 @@
 
 **Current portable build: 1.0.11** — Windows x64, self-contained and unsigned.
 
-File Tags Native is a local Windows desktop application for browsing Desktop and Downloads and assigning private descriptors and tags to files and folders without modifying their ordinary contents.
+File Tags is designed for anyone who frequently downloads, creates, or saves files but later struggles to remember what they were for. Instead of relying only on filenames and folders, you can attach a description and searchable tags that record a file’s purpose, origin, or context. File Tags stores this metadata locally using NTFS alternate data streams and maintains a private search index—helping you find files later by what they mean, not merely what they are called.
+
+It was built as a local Windows desktop application for browsing Desktop and Downloads and assigning private descriptors and tags to files and folders without modifying their ordinary contents.
 
 ## Data safety and privacy
 
@@ -27,13 +29,21 @@ The Data & Safety screen can export and restore readable JSON backups, detect AD
 
 <img src="docs/images/file-tags-tagged-rows.png" alt="File Tags quick metadata editor" width="800">
 
-## Recents
+#### Recents
 
 <img src="docs/images/file-tags-recents.png" alt="File Tags quick metadata editor" width="800">
 
-## Browse by Tags
+#### Browse by Tags
 
 <img src="docs/images/file-tags-browse.png" alt="File Tags quick metadata editor" width="300">
+
+#### Browse by Tags
+
+<img src="docs/images/file-tags-edit.png" alt="File Tags quick metadata editor" width="600">
+
+#### Browse by Tags
+
+<img src="docs/images/file-tags-editor.png" alt="File Tags quick metadata editor" width="800">
 
 ## Launch
 

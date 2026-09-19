@@ -21,7 +21,7 @@ The Data & Safety screen can export and restore readable JSON backups, detect AD
 
 ### Main file browser
 
-![File Tags main file browser](docs/images/file-tags-metadata-editor (1).png)
+![File Tags main file browser](docs/images/file-tags-metadata-editor_11.png)
 
 ### Quick metadata editor
 
@@ -33,7 +33,7 @@ The Data & Safety screen can export and restore readable JSON backups, detect AD
 
 ## Browse by Tags
 
-<img src="docs/images/file-tags-browse.png" alt="File Tags quick metadata editor" width="520">
+<img src="docs/images/file-tags-browse.png" alt="File Tags quick metadata editor" width="300">
 
 ## Launch
 
